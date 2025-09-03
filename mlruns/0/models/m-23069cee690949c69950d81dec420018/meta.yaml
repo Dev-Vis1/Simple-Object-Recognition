@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/atomi/Documents/Job%20Projects/Simple-Object-Recognition/mlruns/0/models/m-23069cee690949c69950d81dec420018/artifacts
+creation_timestamp: 1756890672472
+experiment_id: '0'
+last_updated_timestamp: 1756890682168
+model_id: m-23069cee690949c69950d81dec420018
+model_type: null
+name: model
+source_run_id: null
+status: 2
+status_message: null

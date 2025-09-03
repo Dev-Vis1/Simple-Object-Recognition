@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/atomi/Documents/Job%20Projects/Simple-Object-Recognition/mlruns/0/c5d6fe1d75004d7d8fe24613bfaf315e/artifacts
+end_time: 1756890672437
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c5d6fe1d75004d7d8fe24613bfaf315e
+run_name: bemused-crane-664
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756890328293
+status: 3
+tags: []
+user_id: atomi
