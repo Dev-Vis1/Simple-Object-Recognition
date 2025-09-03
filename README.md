@@ -17,17 +17,34 @@ A Convolutional Neural Network (CNN) is a type of deep learning model especially
 - torch
 - torchvision
 - opencv-python
+- mlflow
 
 ## Usage
+
 1. Install dependencies:
    ```sh
-   pip install torch torchvision opencv-python
+   pip install torch torchvision opencv-python mlflow
    ```
 2. Run the script:
    ```sh
    python simple_object_recognition.py
    ```
 3. After training, a webcam window will open. Show an object to the camera to see the predicted class. Press 'q' to quit.
+
+## MLflow Experiment Tracking
+
+This project uses [MLflow](https://mlflow.org/) to track experiments, log hyperparameters, metrics, and save trained models.
+
+### How to Use MLflow
+
+1. After running the script, experiment data will be logged automatically.
+2. To view and compare experiment runs, launch the MLflow UI:
+   ```sh
+   mlflow ui
+   ```
+3. Open [http://localhost:5000](http://localhost:5000) in your browser to explore runs, metrics, and models.
+
+You can find the logged models and metrics in the `mlruns` directory created in your project folder.
 
 ## Note
 - The model is only trained on CIFAR-10 classes. The accuracy is quite low, 68% and some classes like 'mobile phone' and 'pen' are not in the training set.

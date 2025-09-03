@@ -1,3 +1,4 @@
+import mlflow
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -72,8 +73,49 @@ if __name__ == '__main__':
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     trainloader, testloader = get_data_loaders()
     model = SimpleCNN().to(device)
-    train_model(model, trainloader, device)
-    evaluate_model(model, testloader, device)
+    epochs = 5
+    learning_rate = 0.001
+
+    with mlflow.start_run():
+        # Log hyperparameters
+        mlflow.log_param("learning_rate", learning_rate)
+        mlflow.log_param("epochs", epochs)
+
+        # Training
+        criterion = nn.CrossEntropyLoss()
+        optimizer = optim.Adam(model.parameters(), lr=learning_rate)
+        model.train()
+        for epoch in range(epochs):
+            running_loss = 0.0
+            for i, (inputs, labels) in enumerate(trainloader):
+                inputs, labels = inputs.to(device), labels.to(device)
+                optimizer.zero_grad()
+                outputs = model(inputs)
+                loss = criterion(outputs, labels)
+                loss.backward()
+                optimizer.step()
+                running_loss += loss.item()
+            avg_loss = running_loss / len(trainloader)
+            print(f'Epoch {epoch+1}, Loss: {avg_loss:.4f}')
+            mlflow.log_metric("loss", avg_loss, step=epoch+1)
+
+        # Evaluation
+        model.eval()
+        correct = 0
+        total = 0
+        with torch.no_grad():
+            for inputs, labels in testloader:
+                inputs, labels = inputs.to(device), labels.to(device)
+                outputs = model(inputs)
+                _, predicted = torch.max(outputs, 1)
+                total += labels.size(0)
+                correct += (predicted == labels).sum().item()
+        accuracy = 100 * correct / total
+        print(f'Accuracy: {accuracy:.2f}%')
+        mlflow.log_metric("accuracy", accuracy)
+
+        # Log the trained model
+        mlflow.pytorch.log_model(model, "model")
 
     # --- Webcam real-time classification ---
     classes = ['plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck', 'mobile phone', 'pen']
@@ -101,3 +143,4 @@ if __name__ == '__main__':
             break
     cap.release()
     cv2.destroyAllWindows()
+

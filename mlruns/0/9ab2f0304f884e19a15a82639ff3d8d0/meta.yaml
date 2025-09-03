@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/atomi/Documents/Job%20Projects/Simple-Object-Recognition/mlruns/0/9ab2f0304f884e19a15a82639ff3d8d0/artifacts
+end_time: 1756888821416
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 9ab2f0304f884e19a15a82639ff3d8d0
+run_name: incongruous-yak-302
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756888460705
+status: 3
+tags: []
+user_id: atomi

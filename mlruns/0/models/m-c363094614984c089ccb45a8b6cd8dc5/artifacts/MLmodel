@@ -1,0 +1,23 @@
+artifact_path: file:///C:/Users/atomi/Documents/Job%20Projects/Simple-Object-Recognition/mlruns/0/models/m-c363094614984c089ccb45a8b6cd8dc5/artifacts
+flavors:
+  python_function:
+    config:
+      device: null
+    data: data
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pytorch
+    pickle_module_name: mlflow.pytorch.pickle_module
+    python_version: 3.13.7
+  pytorch:
+    code: null
+    model_data: data
+    pytorch_version: 2.8.0+cpu
+mlflow_version: 3.3.2
+model_id: m-c363094614984c089ccb45a8b6cd8dc5
+model_size_bytes: 1082509
+model_uuid: m-c363094614984c089ccb45a8b6cd8dc5
+prompts: null
+run_id: 9ab2f0304f884e19a15a82639ff3d8d0
+utc_time_created: '2025-09-03 08:40:09.529486'
