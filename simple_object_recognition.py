@@ -114,8 +114,12 @@ if __name__ == '__main__':
         print(f'Accuracy: {accuracy:.2f}%')
         mlflow.log_metric("accuracy", accuracy)
 
-        # Log the trained model
-        mlflow.pytorch.log_model(model, "model")
+    # Log the trained model
+    mlflow.pytorch.log_model(model, "model")
+
+    # Register the model in the MLflow Model Registry
+    run = mlflow.active_run()
+    mlflow.register_model(f"runs:/{run.info.run_id}/model", "SimpleObjectRecognitionModel")
 
     # --- Webcam real-time classification ---
     classes = ['plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck', 'mobile phone', 'pen']
